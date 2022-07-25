@@ -11,3 +11,10 @@ Feel free to fix
 Covered -
 1. Root Beer
 2. Hopefully some RASP
+
+
+Available on Frida CodeShare , can be accessed from Frida Commandline
+
+```sh
+frida --codeshare apkunpacker/hideroot -f YOUR_BINARY
+```
