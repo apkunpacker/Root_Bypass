@@ -48,11 +48,11 @@ Interceptor.replace(openPtr, new NativeCallback(function(pathname, flag) {
         console.log("open : ", Path)        
         while (parseInt(read(FD, MapsBuffer, 512)) !== 0) {
             var MBuffer = MapsBuffer.readCString();
-            MBuffer = MBuffer.replaceAll(" /system/", "FakingMaps");
-            MBuffer = MBuffer.replaceAll(" /vendor/", "FakingMaps");
-            MBuffer = MBuffer.replaceAll(" /product/", "FakingMaps");
-            MBuffer = MBuffer.replaceAll(" /system_ext/", "FakingMaps");
-            MBuffer = MBuffer.replaceAll(" /data/", "FakingMaps");
+          //MBuffer = MBuffer.replaceAll(" /system/", "FakingMaps");
+          //MBuffer = MBuffer.replaceAll(" /vendor/", "FakingMaps");
+          //MBuffer = MBuffer.replaceAll(" /product/", "FakingMaps");
+          //MBuffer = MBuffer.replaceAll(" /system_ext/", "FakingMaps");
+          //MBuffer = MBuffer.replaceAll(" /data/", "FakingMaps");
             MBuffer = MBuffer.replaceAll("libriru", "FakingMaps");
             MBuffer = MBuffer.replaceAll("frida", "FakingMaps");
             MBuffer = MBuffer.replaceAll("magisk", "FakingMaps");                          
@@ -195,9 +195,10 @@ Interceptor.attach(Module.findExportByName(null, "strstr"), {
             this.root = true;
            // console.log("strstr : ", str1, str2);
         }
-        if (str1.indexOf(" /system/") !== -1 || str2.indexOf(" /system/") !== -1 || str1.indexOf(" /vendor/") !== -1 || str2.indexOf(" /vendor/") !== -1 || str1.indexOf(" /product/") !== -1 || str2.indexOf(" /product/") !== -1 || str1.indexOf(" /system_ext/") !== -1 || str2.indexOf(" /system_ext/") !== -1 || str1.indexOf("linker") !== -1 || str2.indexOf("linker") !== -1) {
-            this.root = true;
-             console.log("strstr : ",str1,str2); 
+        if (str1.indexOf(" /system/") !== -1 || str2.indexOf(" /system/") !== -1 || str1.indexOf(" /vendor/") !== -1 || str2.indexOf(" /vendor/") !== -1 || str1.indexOf(" /product/") !== -1 || str2.indexOf(" /product/") !== -1 || str1.indexOf(" /system_ext/") !== -1 || str2.indexOf(" /system_ext/") !== -1 || str1.indexOf("linker") !== -1 || str2.indexOf("linker") !== -1) 
+        {
+            //this.root = true;
+            //console.log("strstr : ",str1,str2); 
         }
     },
     onLeave: function(retval) {
